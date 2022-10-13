@@ -38,10 +38,16 @@ public class UserController {
         return "user";
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/dashboard")
     public String showHomePage() {
 
-        return "welcome";
+        return "dashboard";
+    }
+    
+    @GetMapping("/list")
+    public String showPlantList(){
+    
+        return "list";
     }
 
     @PostMapping("/addUser")
