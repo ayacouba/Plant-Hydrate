@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Your Calendar</title>
+
+    <link href="style.css" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
+            rel="stylesheet"
+    />
+</head>
+<body>
+
+<div id="container">
+    <div id="header">
+        <div class="font-effect-3d" id="monthDisplay" style="font-family: Rancho, serif; text-shadow: 4px 4px 4px #1e90ff;"></div>
+        <div>
+            <button id="backButton">Back</button>
+            <button id="nextButton">Next</button>
+            <div><button onclick="window.location.href = 'dashboard.html'" id="dashboardButton">Back to Dashboard</button></div>
+        </div>
+    </div>
+
+    <div class="font-effect-shadow-multiple"  style="font-family: Rancho, serif;" id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+    </div>
+
+    <div id="calendar"></div>
+</div>
+
+<div id="newEventModal">
+    <h2  class="font-effect-shadow-multiple"  style="font-family: Rancho, serif;" >New Reminder</h2>
+
+    <input id="eventTitleInput" placeholder="Plant Name" />
+
+    <button id="saveButton">Save</button>
+    <button id="cancelButton">Cancel</button>
+</div>
+
+<div id="deleteEventModal">
+    <h2  class="font-effect-shadow-multiple"  style="font-family: Rancho, serif;">Water Your Plant</h2>
+
+    <p id="eventText"></p>
+
+    <button id="deleteButton">Delete</button>
+    <button id="closeButton">Close</button>
+</div>
+
+<div id="modalBackDrop"></div>
+
+<script src="./script.js"></script>
+</body>
+</html>
