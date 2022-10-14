@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<title>P-H20 DASHBOARD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+    body {
+        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        font-family: Lato, sans-serif;
+    }
+    .container {
+        display: block;
+        width: 400px;
+        margin: 100px auto 0;
+    }
+
+    li * {
+        float: left;
+    }
+    li, h3 {
+        clear:both;
+        list-style:none;
+
+    }
+    /* Heading */
+    h3,
+    label[for='new-plant'] {
+        color: #333;
+        font-weight: 700;
+        font-size: 25px;
+        border-bottom: 2px solid #333;
+        padding: 30px 0 10px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+
+
+
+
+
+
+</style>
+<body>
+
+    <h3 style="text-align: center">Welcome to Plant Hydrate</h3>
+
+    <title>Plant List</title>
+
+
+<head>
+<body>
+
+
+    <p>
+
+    <div class=" " style="text-align: center">
+
+
+        <div class ="container ">
+
+            <h3 style="text-align: center"> Plant List
+            </h3>
+            <div class="flex flex-col justify-center items-center flex mr-4">
+
+
+                <input class=" " name="text" id="text" placeholder=" " style="text-align: center"/>
+                <input type="hidden" id="saveIndex"  />
+                <button class=" " id="add-plant-btn">Add</button>
+                <button class=" " style="display: none" id="save-plant-btn">Save</button>
+            </div>
+
+            <div id="plants"></div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        //Get access to elements
+        const text = document.getElementById("text");
+        const addPlantButton = document.getElementById("add-plant-btn");
+        const savePlantButton = document.getElementById("save-plant-btn");
+        const listBox = document.getElementById("plants");
+        const saveInd = document.getElementById("saveIndex");
+
+        //Store plants
+        let plantArray = [];
+
+        //Add plant and push to plantArray and use click on add button
+        addPlantButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            let plant = localStorage.getItem("plant");
+            if (plant === null) {
+                plantArray = [];
+            } else {
+                plantArray = JSON.parse(plant);
+            }
+            plantArray.push(text.value);
+            text.value = "";
+            localStorage.setItem("plant", JSON.stringify(plantArray));
+            displayPlant();
+        });
+
+//Display plants
+        function displayPlant() {
+            let plant = localStorage.getItem("plant");
+            if (plant === null) {
+                plantArray = [];
+            } else {
+                plantArray = JSON.parse(plant);
+            }
+            let htmlCode = "";
+            plantArray.forEach((list, ind) => {
+                htmlCode += `<div class='flex mb-4 items-center'>
+   <p class='w-full text-grey-darkest'>${list}</p>
+   <button onclick='edit(${ind})' class='flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white '>Edit</button>
+   <button onclick='deletePlant(${ind})' class='flex-no-shrink p-2 ml-2 border-2 rounded '>Delete</button>
+</div>`;
+            });
+            listBox.innerHTML = htmlCode;
+        }
+
+//Delete Plant
+        function deletePlant(ind) {
+            let plant = localStorage.getItem("plant");
+            plantArray = JSON.parse(plant);
+            //splice() method deletes the item at the specified index
+            plantArray.splice(ind, 1);
+            //store changes to local storage
+            localStorage.setItem("plant", JSON.stringify(plantArray));
+            displayPlant();
+        }
+
+//Edit plant and save to local storage
+        function edit(ind) {
+            saveInd.value = ind;
+            let plant = localStorage.getItem("plant");
+            plantArray = JSON.parse(plant);
+            text.value = plantArray[ind];
+            addPlantButton.style.display = "none";
+            savePlantButton.style.display = "block";
+        }
+
+        savePlantButton.addEventListener("click", () => {
+            let plant = localStorage.getItem("plant");
+            plantArray = JSON.parse(plant);
+            let id = saveInd.value;
+            plantArray[id] = text.value;
+            addPlantButton.style.display = "block";
+            savePlantButton.style.display = "none";
+            text.value = "";
+            localStorage.setItem("plant", JSON.stringify(plantArray));
+            displayPlant();
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
