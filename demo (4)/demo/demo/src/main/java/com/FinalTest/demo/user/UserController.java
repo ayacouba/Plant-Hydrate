@@ -87,9 +87,10 @@ public class UserController {
 
         return "reset";
     }
-
-//    @DeleteMapping("/delete/{id}")
-//    public void delete(@PathVariable long id) {
-//        service.deleteById(id);
-//    }
+ 
+    @GetMapping("/delete/{userId}")
+    public String deleteUser(@PathVariable("userId") String userId){
+        service.deleteUser(userId);
+        return "redirect:/all";
+    }   
 }

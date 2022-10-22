@@ -20,13 +20,17 @@
                             <thead>
                                 <tr>
                                     <th>UserName</th>
-                                    <th>Email</th>
+                                    <th>Email</th>  
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="user : ${userList}">
                                     <td th:text=" ${user.userId}"></td>
                                     <td th:text=" ${user.email}"></td>
+                                    <td>
+                                    <a th:href="@{'/delete/' + ${user.userId}}">Delete</a>
+                                    </td>
                                 </tr>
 
                             </tbody>
