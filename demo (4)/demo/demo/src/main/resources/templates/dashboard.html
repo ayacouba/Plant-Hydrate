@@ -1,164 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-      
-<title>P-H20 DASHBOARD</title>
-<link
+
+    <title>P-H20 DASHBOARD</title>
+    <link
         href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
         rel="stylesheet"
-/>
+        />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-button {
-  width: 75px;
-  cursor: pointer;
-  box-shadow: 0px 0px 2px gray;
-  border: none;
-  outline: none;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  background-color:#92a1d1;
-}
- body {
-        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
-        font-family: Lato, sans-serif;
-    }
-    .container {
-        display: block;
-        width: 400px;
-        margin: 100px auto 0;
-    }
+    <style>
 
-    li * {
-        float: left;
-    }
-    li, h3 {
-        clear:both;
-        list-style:none;
+        button {
+            width: 75px;
+            cursor: pointer;
+            box-shadow: 0px 0px 2px gray;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 5px;
+            color: white;
+            background-color:#92a1d1;
+        }
+        body {
+            background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+            font-family: Lato, sans-serif;
+        }
+        .container {
+            display: block;
+            width: 400px;
+            margin: 100px auto 0;
+        }
 
-    }
-    /* Heading */
-    h3,h1,
-    label[for='new-plant'] {
-        color: yellowgreen;
-        font-weight: 700;
-        font-size: 25px;
-        border-bottom: 2px solid #333;
-        padding: 30px 0 10px;
-        margin: 0;
-        text-transform: uppercase;
-        font-family: Rancho, serif
-    }
-</style>
- <div class="btn-text-right">
-                <button onclick="window.location.href = '/'"  id="logout-btn">Logout</button>
+        li * {
+            float: left;
+        }
+        li, h3 {
+            clear:both;
+            list-style:none;
+
+        }
+        /* Heading */
+        h3,h1,
+        label[for='new-plant'] {
+            color: yellowgreen;
+            font-weight: 700;
+            font-size: 25px;
+            border-bottom: 2px solid #333;
+            padding: 30px 0 10px;
+            margin: 0;
+            text-transform: uppercase;
+            font-family: Rancho, serif
+        }
+    </style>
+    <div class="btn-text-right">
+        <button onclick="window.location.href = '/'"  id="logout-btn">Logout</button>
+    </div>
+    <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 100px;">
+        Dashboard
+    </h1>
+
+    <title>Plant List</title>
+    <head>
+    <body>
+
+
+        <p>
+
+        <div class=" " style="text-align: center">
+
+
+            <div class="container ">
+
+                <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List
+                </h3>
+                <div class="flex flex-col justify-center items-center flex mr-4">
+
+
+                    <input class=" " name="text" id="text" placeholder=" " style="text-align: center"/>
+                    <!--< only seen by the user>-->
+                    <input type="hidden" id="saveIndex"/>
+                    <button class=" " id="add-plant-btn">Add</button>
+
+                    <button onclick="window.location.href = '/calendar'"  id="calendar-btn">View Your Calendar</button>
+                    <button class=" " style="display: none" id="save-plant-btn">Save</button>
+
+                </div>
+                <!--< plant list>-->
+                <div id="plants"></div>
             </div>
-<h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 100px;">
-    Dashboard
-</h1>
-
-<title>Plant List</title>
-<head>
-<body>
-
-
-<p>
-
-<div class=" " style="text-align: center">
-
-
-    <div class="container ">
-
-        <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List
-        </h3>
-        <div class="flex flex-col justify-center items-center flex mr-4">
-
-
-            <input class=" " name="text" id="text" placeholder=" " style="text-align: center"/>
-            <input type="hidden" id="saveIndex"/>
-            <button class=" " id="add-plant-btn">Add</button>
-            
-            <button onclick="window.location.href = '/calendar'"  id="calendar-btn">View Your Calendar</button>
-            <button class=" " style="display: none" id="save-plant-btn">Save</button>
-            
         </div>
 
-        <div id="plants"></div>
-    </div>
-</div>
 
+        <script>
+            //Get access to elements
+            const text = document.getElementById("text");
+            const addPlantButton = document.getElementById("add-plant-btn");
+            const savePlantButton = document.getElementById("save-plant-btn");
+            const listBox = document.getElementById("plants");
+            const saveInd = document.getElementById("saveIndex");
 
-<script>
-    //Get access to elements
-        const text = document.getElementById("text");
-        const addPlantButton = document.getElementById("add-plant-btn");
-        const savePlantButton = document.getElementById("save-plant-btn");
-        const listBox = document.getElementById("plants");
-        const saveInd = document.getElementById("saveIndex");
+            //Declare array to store plants
+            let plantArray = [];
 
-        //Store plants
-        let plantArray = [];
+            displayPlant();
 
-        //Add plant and push to plantArray and use click on add button
-        addPlantButton.addEventListener("click", (e) => {
+            //Add plant and push to plantArray and use click on add button
+            addPlantButton.addEventListener("click", (e) => {
             e.preventDefault();
             let plant = localStorage.getItem("plant");
             if (plant === null) {
-                plantArray = [];
+            plantArray = [];
             } else {
-                plantArray = JSON.parse(plant);
+            plantArray = JSON.parse(plant);
             }
             plantArray.push(text.value);
             text.value = "";
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-        });
+            });
 
-//Display plants
-        function displayPlant() {
+            //Display plants
+            function displayPlant() {
             let plant = localStorage.getItem("plant");
             if (plant === null) {
-                plantArray = [];
+            plantArray = [];
             } else {
-                plantArray = JSON.parse(plant);
+            plantArray = JSON.parse(plant);
             }
             let htmlCode = "";
+            //forEach iterates through each array item
             plantArray.forEach((list, ind) => {
-                htmlCode += `<div class='flex mb-4 items-center'>
-   <p class='w-full text-grey-darkest'>${list}</p>
-   <button onclick='edit(${ind})' class='flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white '>Edit</button>
-   <button onclick='deletePlant(${ind})' class='flex-no-shrink p-2 ml-2 border-2 rounded '>Delete</button>
-</div>`;
+            htmlCode += `<div class='flex mb-4 items-center'>
+            <p class='w-full text-grey-darkest'>${list}</p>
+            <button onclick='edit(${ind})' class='flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white '>Edit</button>
+            <button onclick='deletePlant(${ind})' class='flex-no-shrink p-2 ml-2 border-2 rounded '>Delete</button>
+            </div>`;
             });
             listBox.innerHTML = htmlCode;
-        }
+            }
 
-//Delete Plant
-        function deletePlant(ind) {
+            //Delete Plant
+            function deletePlant(ind) {
             let plant = localStorage.getItem("plant");
             plantArray = JSON.parse(plant);
-            //splice() method deletes the item at the specified index
+            //splice deletes the item at the specified index
             plantArray.splice(ind, 1);
             //store changes to local storage
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-        }
+            }
 
-//Edit plant and save to local storage
-        function edit(ind) {
+            //Edit plant and save to local storage
+            function edit(ind) {
             saveInd.value = ind;
             let plant = localStorage.getItem("plant");
             plantArray = JSON.parse(plant);
+            //get plant from text box
             text.value = plantArray[ind];
             addPlantButton.style.display = "none";
             savePlantButton.style.display = "block";
-        }
+            }
 
-        savePlantButton.addEventListener("click", () => {
+            //Save Plant
+            savePlantButton.addEventListener("click", () => {
             let plant = localStorage.getItem("plant");
             plantArray = JSON.parse(plant);
             let id = saveInd.value;
@@ -168,9 +174,9 @@ button {
             text.value = "";
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-        });
+            });
 
-</script>
+        </script>
 
-</body>
+    </body>
 </html>

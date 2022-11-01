@@ -4,13 +4,13 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
-    <title>P-H20 DASHBOARD</title>
+    <title>Admin</title>
     <link
         href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
-        rel="stylesheet"
-        />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        rel="stylesheet"/>
+    </link>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
     <style>
 
         body {
@@ -59,29 +59,22 @@
         }
     </style>
     </head>
- <body>
-<div class="btn-text-right">
-                <button onclick="window.location.href = '/'"  id="logout-btn">Logout</button>
+<body>
+    <div class="btn-text-right">
+        <button onclick="window.location.href = '/'"  id="logout-btn">Logout</button>
             </div>
         <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 100px;">
-            Dashboard
+            Administrator
         </h1>
-    </body>
     <div class=" " style="text-align: center">
-
-
         <div class="container ">
-
-            <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Administrator
-            </h3>
+            <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> User List</h3>
             <div class="flex flex-col justify-center items-center flex mr-4">
-        <form th:action="@{/all}" method="get">
-
-              <div><button  onclick="window.location.href = '/user'" id="dashboardButton">View User List</button></div>
-        </form>  
+                <form th:action="@{/all}" method="get">
+                    <div><button  onclick="window.location.href = '/user'" id="dashboardButton">View User List</button></div>
+                </form>  
             </div>
         </div>
     </div>
-
 </body>
 </html>
