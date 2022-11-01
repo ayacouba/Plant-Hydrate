@@ -1,5 +1,5 @@
 
-package com.FinalTest.demo.user;
+package com.FinalTest.demo.admin;
 /**
  * Last updated: 10/31/2022 
  * Purpose: Hides implementation from user. Allows access to JpaRepository
@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author llove
  */
-public interface UserRepository extends JpaRepository<User, String>{
-  
+public interface AdminRepository extends JpaRepository<Admin,String>{
+    
 }
