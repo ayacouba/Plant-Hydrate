@@ -72,17 +72,13 @@
             border: none;
             outline: none;
             height: 35px;
-            /*background: #3CB371;*/
             background:white;
-            /*color: #fff;*/
             color:black;
             font-size: 25px;
             border-radius: 20px;
         }
         .loginbox input[type="submit"]:hover{
             cursor: pointer;
-            /*background: #8FBC8F;*/
-            /*background:#aaa;*/
             color: #000;
         }
         .loginbox a{
@@ -97,26 +93,27 @@
     </style>
 
     <body>
-        <div id="header1">
-            <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
-                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Welcome to P-H20
-            </h1>
+        <br>
+        <div style="text-align: center">
+            <div style="color:red">
+            <h2>Please enter correct<br>Username or Password</h2>
+            </div>
         </div>
         <div class="loginbox">
             <h1>Sign In</h1>
-            <form th:action="@{/userLogin}" th:object="${user}" method="post">
+            <form th:action="@{/adminLogin}" th:object="${admin}" method="post">
                 <p>Username</p>
-                <input type="text"  th:field="*{userName}" placeholder="Enter Username"></input>
+                <input type="text"  th:field="*{adminName}" placeholder="Enter Username"></input>
                 <p>Password</p>
-                <input type="password" th:field="*{password}" placeholder="Enter Password"></input><br>
+                <input type="password" th:field="*{adminPassword}" placeholder="Enter Password"></input><br>
                     <div style="text-align: center">
-                        <input type="submit" value="Login" onclick="window.location.href = '/dashboard.html'" id="login-btn"></input>
+                        <input type="submit" value="Login" onclick="window.location.href = '/admindash.html'" id="login-btn"></input>
                     </div>
             </form>
             <div style="text-align: center">
                 <!--<a th:href="@{/reset}">Forgot Username or Password?</a><br>-->
                 <a th:href="@{/register}">Don't have an account?</a><br>
-                 <a th:href="@{/admin}">Administrator Login</a><br>
+                 <a th:href="@{/}">Not an administrator?</a><br>
             </div>
     </body>
 </html>

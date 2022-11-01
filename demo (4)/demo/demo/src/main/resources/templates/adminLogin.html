@@ -5,7 +5,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <head>
-        <title>Plant Hydrate</title>
+        <title>Administrator Login</title>
         <meta name="viewport" 
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         </meta>
@@ -81,8 +81,6 @@
         }
         .loginbox input[type="submit"]:hover{
             cursor: pointer;
-            /*background: #8FBC8F;*/
-            /*background:#aaa;*/
             color: #000;
         }
         .loginbox a{
@@ -99,24 +97,23 @@
     <body>
         <div id="header1">
             <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
-                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Welcome to P-H20
+                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Administrator Login
             </h1>
         </div>
         <div class="loginbox">
             <h1>Sign In</h1>
-            <form th:action="@{/userLogin}" th:object="${user}" method="post">
+            <form th:action="@{/adminLogin}" th:object="${admin}" method="post">
                 <p>Username</p>
-                <input type="text"  th:field="*{userName}" placeholder="Enter Username"></input>
+                <input type="text"  th:field="*{adminName}" placeholder="Enter Username"></input>
                 <p>Password</p>
-                <input type="password" th:field="*{password}" placeholder="Enter Password"></input><br>
+                <input type="password" th:field="*{adminPassword}" placeholder="Enter Password"></input><br>
                     <div style="text-align: center">
-                        <input type="submit" value="Login" onclick="window.location.href = '/dashboard.html'" id="login-btn"></input>
+                        <input type="submit" value="Login" onclick="window.location.href = '/admindash.html'" id="login-btn"></input>
                     </div>
             </form>
             <div style="text-align: center">
-                <!--<a th:href="@{/reset}">Forgot Username or Password?</a><br>-->
                 <a th:href="@{/register}">Don't have an account?</a><br>
-                 <a th:href="@{/admin}">Administrator Login</a><br>
+                <a th:href="@{/}">Not an administrator?</a><br>
             </div>
     </body>
 </html>
