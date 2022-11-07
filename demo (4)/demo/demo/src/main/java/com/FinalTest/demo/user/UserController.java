@@ -70,10 +70,22 @@ public class UserController {
         return "user";
     }
 
+@GetMapping("/weather")
+    public String viewWeather() {
+
+        return "weather";
+    }
+
     @GetMapping("/dashboard")
     public String showHomePage() {
 
         return "dashboard";
+    }
+
+@GetMapping("/infoPage")
+    public String infoPage() {
+
+        return "infoPage";
     }
 
     @GetMapping("/calendar")
