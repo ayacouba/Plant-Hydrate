@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Plant Hydrate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+                <link
+                    href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
+                    rel="stylesheet"/>
+                </head>
+                <style>
+                    body{
+                        margin: 0;
+                        padding: 0;
+                        background-color: white;
+                        background-size: cover;
+                        background-position: center;
+                        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+                        font-family: Rancho, serif
+                    }
+                    .loginbox{
+                        width: 320px;
+                        height: 370px;
+                        background: #000;
+                        color: #fff;
+                        top: 50%;
+                        left: 50%;
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        padding: 30px 20px 50px 20px;
+                    }
+                    h1{
+                        margin: 0;
+                        padding: 0 0 15px 15px;
+                        text-align: center;
+                        font-size: 28px;
+                    }
+                    .loginbox p{
+                        margin: 0;
+                        padding:0;
+                        font-weight:bold;
+                        font-size: 20px;
+                    }
+                    .loginbox input{
+                        width:100%;
+                        margin-bottom:20px;
+                    }
+                    .loginbox input[type="text"], input[type="password"]
+                    {
+                        border: none;
+                        border-bottom: 1px solid #fff;
+                        background: transparent;
+                        outline:none;
+                        height: 23px;
+                        color: #fff;
+                        font-size:16px;
+                        font-family: Rancho, serif
+                    }
+                    .loginbox input[type="submit"]
+                    {
+                        margin:4px;
+                        border: none;
+                        outline: none;
+                        height: 30px;
+                        /*background: #3CB371;*/
+                        background:white;
+                        /*color: #fff;*/
+                        color:black;
+                        font-size: 20px;
+                        border-radius: 20px;
+                        font-family: Rancho, serif
+                    }
+                    .loginbox input[type="submit"]:hover{
+                        cursor: pointer;
+                        /*background: #8FBC8F;*/
+                        /*background:#aaa;*/
+                        color: #000;
+                    }
+                    .loginbox a{
+                        text-decoration: none;
+                        font-size: 15px;
+                        line-height: 20px;
+                        color: darkgrey;
+                    }
+                    .loginbox a:hover{
+                        color: #8FBC8F;
+
+                    }
+
+                </style>
+
+                <link rel="stylesheet" type="text/css" href="style.css">
+                    <body>
+                        <div id="header1">
+                            <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
+                                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Welcome to P-H20</h1>
+                        </div>
+                        <div class="loginbox">
+
+                            <h1>Signup</h1>
+                            <form th:action="@{/registerUser}" th:object="${user}" method="post">
+                                <p>Username</p>
+                                <input type="text"  th:field="*{userId}" placeholder="Enter Username">
+                                    <p>Email</p>
+                                    <input type="text" th:field="*{email}" placeholder="Enter Email">
+                                        <p>Password</p>
+                                        <input type="password" th:field="*{password}" placeholder="Enter Password">
+
+                                            <!--<button style="font-size: 1rem; color: #2ecc71" onclick="window.location.href = '/dashboard.html'" id="login-btn">Create Account</button><br>-->
+                                            <input type="submit" value="Create Account" onclick="window.location.href = '/dashboard.html'" id="login-btn">
+                                                <div style="text-align: center">
+                                                    <a th:href="@{/}">Already have an account?</a><br>
+                                                     <a th:href="@{/infoPage}">About Plant-Hydrate</a><br>
+
+                                                </div>
+                                               
+                                                </form>
+                                                </div>
+
+                                                </body>
+                                                </html>
