@@ -126,6 +126,17 @@ public class UserController {
         return "calendar";
     }
 
+@GetMapping("/weather")
+    public String viewWeather() {
+
+        return "weather";
+    }
+
+@GetMapping("/infoPage")
+    public String infoPage() {
+
+        return "infoPage";
+    }
     /**
      * Displays reset password page
      *
