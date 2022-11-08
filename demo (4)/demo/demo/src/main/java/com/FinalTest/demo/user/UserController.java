@@ -1,19 +1,18 @@
 package com.FinalTest.demo.user;
 
 /**
- * Last updated: 10/31/2022 
- * Purpose: This class takes user input and turns it into a model to be 
- * displayed by the view. 
+ * Last updated: 11/07/2022 Purpose: This class takes user input and turns it
+ * into a model to be displayed by the view. 
  * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
  */
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,27 +46,30 @@ public class UserController {
     }
 
     /**
-     * Checks user input against "user" table in database. If the username and
-     * password match and are found, it displays user's dashboard. Otherwise it
+     * Checks user input against "user" table in database.If the username and
+     * password match and are found, it displays user's dashboard.Otherwise it
      * displays incorrect login page.
      *
      * @param user
+     * @param result
+     * @param model
      * @return admindash.html, dashboard.html or error.html
      */
     @PostMapping("/userLogin")
-    public String loginUser(@ModelAttribute("user") User user) {
-        String result = "userLoginError";
+    public String loginUser(@Valid User user, BindingResult result, Model model) {
+        String display = "index";
         try {
             String userName = user.getUserName();
             repo.findById(userName);
             Optional<User> userdata = repo.findById(userName);
             if (user.getPassword().equals(userdata.get().getPassword())) {
-                result = "dashboard";
+                display = "dashboard";
             }
         } catch (Exception e) {
-            result = "userLoginError";
+            result.hasErrors();
+            display = "index";
         }
-        return result;
+        return display;
 
     }
 
@@ -89,24 +91,17 @@ public class UserController {
      * after successful signup
      *
      * @param user
+     * @param result
+     * @param model
      * @return dashboard.html
      */
     @PostMapping("/registerUser")
-    public String registerUser(@ModelAttribute("user") User user) {
+    public String registerUser(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "signup";
+        }
         service.registerUser(user);
         return "dashboard";
-    }
-
-    /**
-     * Retrieves a list of all users stored in database and displays it
-     *
-     * @param model
-     * @return user.html
-     */
-    @GetMapping("/all")
-    public String getAllUsers(Model model) {
-        model.addAttribute("userList", service.getAllUsers());
-        return "user";
     }
 
     /**
@@ -129,6 +124,7 @@ public class UserController {
         return "calendar";
     }
 
+}
 
 @GetMapping("/weather")
     public String viewWeather() {

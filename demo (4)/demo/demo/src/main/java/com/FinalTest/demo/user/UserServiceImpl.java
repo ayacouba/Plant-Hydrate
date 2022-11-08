@@ -1,7 +1,7 @@
 package com.FinalTest.demo.user;
 
 /**
- * Last updated: 10/31/2022 
+ * Last updated: 11/07/2022 
  * Purpose: This class handles the communication
  * between the UserService interface and the database. 
  * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    //Allows UserController to use UserRepository
-
+   
+    //Allows UserServiceImpl to access UserRepository
     @Autowired
     private UserRepository repo;
-
+   
     /**
      * Retrieves user information from database and stores it in a List of Users
      *
@@ -52,5 +52,4 @@ public class UserServiceImpl implements UserService {
         repo.deleteById(userName);
     }
 
-    
 }
