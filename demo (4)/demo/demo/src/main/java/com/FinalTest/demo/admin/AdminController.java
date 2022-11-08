@@ -1,17 +1,19 @@
 package com.FinalTest.demo.admin;
 
 /**
- * Last updated: 10/31/2022 
- * Purpose: This class takes admin input and turns it into a model to be 
- * displayed by the view. 
- * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
+ * Last updated: 11/07/2022 
+ * Purpose: This class takes admin input and turns it
+ * into a model to be displayed by the view. Contributing authors: Laura Love,
+ * Aimade Yacouba, Kayla Abreu
  */
+import com.FinalTest.demo.user.UserService;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -20,10 +22,14 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class AdminController {
-    
-    //Allows AdminController to use AdminRepository
+
+    //Allows AdminController to access AdminRepository
     @Autowired
     private AdminRepository repo;
+
+    //Allows AdminController to access UserService 
+    @Autowired
+    private UserService userService;
 
     /**
      * Displays login page for administrators
@@ -60,5 +66,29 @@ public class AdminController {
             result = "adminLoginError";
         }
         return result;
+    }
+
+    /**
+     * Retrieves a list of all users stored in database and displays it
+     *
+     * @param model
+     * @return user.html
+     */
+    @GetMapping("/all")
+    public String getAllUsers(Model model) {
+        model.addAttribute("userList", userService.getAllUsers());
+        return "user";
+    }
+
+    /**
+     * Allows administrator to delete a user from database
+     *
+     * @param userName
+     * @return user.html
+     */
+    @GetMapping("/delete/{userName}")
+    public String deleteUser(@PathVariable("userName") String userName) {
+        userService.deleteUser(userName);
+        return "redirect:/all";
     }
 }

@@ -18,105 +18,637 @@
               rel="stylesheet"/>
         </link>
     </head>
-
     <style>
-        body{
+
+        body {
+            font: 100% / 1.414 "Open Sans", "Roboto", arial, sans-serif;
+            background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        }
+        a{
+            /*darkgray*/
+            color: rgb(97, 97, 97);
+        }
+        #navigator{
+            /*darkgray*/
+            color: rgb(97, 97, 97);
+            text-decoration:none;
+            float: left;
+        }
+        .signup__container {
+            position: absolute;
+            /*top: 50%;*/
+            top: 60%;
+            right: 0%;
+            left: 0%;
+            margin-right: auto;
+            margin-left: auto;
+            transform: translateY(-50%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*width: 800px;*/
+            /*width:705px;*/
+            width: 665px;
+            height: 500px;
+            /*max-width: 100%;*/
+            /*height:495px;*/
+            max-height:80%;
+            border-radius: 3px;
+            box-shadow: 0px 3px 7px rgba(0,0,0,.25);
+            background: url(https://www.hawaiihomemag.com/content/uploads/2021/07/g/b/2-fiddle-leaf-fig-scaled.jpg);
+            /*background:url(https://images.pexels.com/photos/1470171/pexels-photo-1470171.jpeg?auto=compress&cs=tinysrgb&w=600);*/
+            /*background-position: top center;*/
+            background-size:100%;
+            /*background:106%;*/
+            background-repeat: no-repeat;
+            /*background-size: cover;*/
+            /*position: relative;*/
+            /*padding: 2rem;*/
+            /*display: flex;*/
+            /*flex-wrap: wrap;*/
+            /*align-items: center;*/
+        }
+
+        .container__child {
+            width: 50%;
+            height: 100%;
+            color: #fff;
+
+        }
+        /*        .signup__thumbnail {
+                    position: relative;
+                    padding: 2rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;*/
+        /*background: url(https://www.hawaiihomemag.com/content/uploads/2021/07/g/b/2-fiddle-leaf-fig-scaled.jpg);*/
+        /*            background-repeat: no-repeat;
+                    background-position: top center;
+                    background-size: cover;*/
+        /*}*/
+        /*        .thumbnail__logo,
+                .thumbnail__content,
+                .thumbnail__links {
+                    position: relative;
+                    z-index: 2;
+                }*/
+        /*        .thumbnail__logo {
+                    align-self: flex-start;
+                }*/
+        .logo__shape {
+            fill: #fff;
+        }
+        .logo__text {
+            display: inline-block;
+            font-size: .8rem;
+            font-weight: 700;
+            vertical-align: bottom;
+        }
+        /*        .thumbnail__content {
+                    align-self: center;
+                }*/
+        h1,
+        h2 {
+            font-weight: 300;
+            color: rgba(255,255,255,1);
+        }
+        .heading--primary {
+            font-size: 1.999rem;
+        }
+        .heading--secondary {
+            font-size: 1.414rem;
+        }
+        /*        .thumbnail__links {
+                    align-self: flex-end;
+                    width: 100%;
+                }
+                .thumbnail__links a {
+                    font-size: 1rem;
+                    color: #fff;
+                    &:focus,
+                        &:hover {
+                        color: rgba(255,255,255,.5);
+                    }
+                }*/
+        .signup__form {
+            padding: 2.5rem;
+             /*text-align: center;*/
+            /*background: #fafafa;*/
+            /*background: #f8f8f6;*/
+
+        }
+        label {
+            font-size: .85rem;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+        .form-control {
+            background-color: transparent;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            border-radius: 0;
+            &:focus {
+                border-color: #111;
+            }
+        }
+        [type="text"] {
+            color: #111;
+        }
+        [type="password"] {
+            color: #111;
+
+        }
+        .btn--form {
+            padding: .5rem 2.5rem;
+            font-size: .95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            /*background: #111;*/
+            background: #9acd32;
+            border-radius: remy(35px);
+            &:focus,
+                &:hover {
+                background: lighten(#111, 13%);
+            }
+        }
+        .signup__link {
+            font-size: .8rem;
+            font-weight: 600;
+            text-decoration: underline;
+            color: #999;
+            &:focus,
+                &:hover {
+                color: darken(#999, 13%);
+            }
+        }
+
+        .side_panel{
+            background: transparent;
+            width: 200px;
+
+        }
+        :root {
+            --home-bg-color: #f2f3ee;
+            --menu-bg-color: #cbcbc2;
+            --silde-btn-border: #808080;
+            --slide-btn-bg: #ddf2db;
+            --slide-btn-hoverbg: #f1fff1;
+            --alpha-green: rgba(33, 96, 47, 0.51);
+            --icon-hover-color: #344a39;
+            --icon-hover-bg: #709680;
+            --text-color: #616161;
+            --border-color: #709680;
+            --heading-color: #344a39;
+            --box-shadow-color: #b5b5ac;
+            --lightest-green: #86a58d;
+            --light-green: #9ab09a;
+            --dark-green: rgba(52, 74, 57, 0.86);
+            --box-shadow: 0px 0px 3px 5px var(--box-shadow-color);
+            --border-radius: 60px 5px;
+            --fade-green: rgba(57, 87, 64, 0.55);
+        }
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
-            background-size: cover;
-            background-position: center;
-            background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
-            font-family: Rancho, serif
-        }
-        .loginbox{
-            width: 320px;
-            height: 370px;
-            background: #000;
-            color: #fff;
-            top: 50%;
-            left: 50%;
-            position: absolute;
-            transform: translate(-50%, -50%);
             box-sizing: border-box;
-            border-radius: 10px;
-            padding: 20px 20px 60px;
+            list-style: none;
         }
-        h1{
-            margin: 0;
-            padding: 0 0 15px 15px;
-            text-align: center;
-            font-size: 28px;
-        }
-        .loginbox p{
-            margin: 0;
-            padding:0;
-            font-weight:bold;
-            font-size: 20px;
-        }
-        .loginbox input{
-            width:100%;
-            margin-bottom:20px;
-        }
-        .loginbox input[type="text"], input[type="password"]
-        {
-            border: none;
-            border-bottom: 1px solid #fff;
-            background: transparent;
-            outline:none;
-            height: 40px;
-            color: #fff;
-            font-size:18px;
-        }
-        .loginbox input[type="submit"]
-        {
-            border: none;
-            outline: none;
-            height: 35px;
-            /*background: #3CB371;*/
-            background:white;
-            /*color: #fff;*/
-            color:black;
-            font-size: 25px;
-            border-radius: 20px;
-        }
-        .loginbox input[type="submit"]:hover{
-            cursor: pointer;
-            /*background: #8FBC8F;*/
-            /*background:#aaa;*/
-            color: #000;
-        }
-        .loginbox a{
-            text-decoration: none;
-            font-size: 16px;
-            line-height: 20px;
-            color: darkgrey;
-        }
-        .loginbox a:hover{
-            color: #8FBC8F;
-        }
-    </style>
+        /*body,
+        html {
+          width: 100%;
+          font-size: 10px;
+          font-size:6px;
+          color: var(--text-color);
+          font-weight: normal;
+          font-family: sans-serif;
+          background-color: var(--home-bg-color);
+        }*/
 
+        #ham-menu {
+            display: none;
+        }
+        label[for="ham-menu"] {
+            /*font-size:20px;*/
+            display: block;
+            position: fixed;
+            top: 24px;
+            left: 20px;
+            z-index: 999;
+            /*width: 60px;*/
+            width:65px;
+            /*height: 60px;*/
+            height: 30px;
+            background-color: var(--home-bg-color);
+            /*border-radius: 15px;*/
+            border-radius: 5px;
+            border: 2px solid var(--border-color);
+        }
+        .ham-menu {
+            /*width: 50vw;*/
+            /*how far menu stretches out*/
+            width: 23%;
+            height: 70%;
+            position: fixed;
+            top: 0;
+            visibility: hidden;
+            transform: translate(-110%);
+            z-index: 998;
+            /*background-color: var(--lightest-green);*/
+            /*background-color: #9cec9c;*/
+            background-color: transparent;
+            transition: 1s;
+            display: flex;
+            /*justify-content: left;*/
+            align-items: center;
+           
+        }
+        .ham-menu > ul {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            padding: 20px;
+            height: 50%;
+           
+        }
+        .ham-menu > ul > li {
+            /*font-size: 5rem;*/
+            font-size:25px;
+            white-space: nowrap;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            color: rgb(97, 97, 97);
+          
+        }
+        #ham-menu:checked + label {
+            background-color: transparent;
+            border-color: var(--dark-green);
+        }
+        #ham-menu:checked ~ div.ham-menu {
+            transform: translate(0px);
+            visibility: visible;
+        }
+        /*.full-page-green {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          width:40%;
+          height: 100%;
+          background-color: var(--dark-green);
+          z-index: 997;
+          opacity: 0;
+          visibility: hidden;
+          display: none;
+          transition: 500ms;
+          position: fixed;
+          top: 0;
+          left: 0;
+        }*/
+        #ham-menu:checked ~ div.full-page-green {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+
+        }
+        [for="ham-menu"] > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-flow: column wrap;
+            align-content: center;
+            align-items: center;
+        }
+        .menu-line {
+            display: block;
+            /*width: 25px;*/
+            width: 17px;
+            /*width: 5px;*/
+            height: 2px;
+            /*height: 1px;*/
+            margin: 10px 0 5px;
+            /*margin: 5px 0 1px;*/
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+            background-color: var(--border-color);
+            transition: 500ms;
+            transform-origin: right center;
+        }
+        [for="ham-menu"] > div > span:nth-child(4),
+        [for="ham-menu"] > div > span:nth-child(5),
+        [for="ham-menu"] > div > span:nth-child(6) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            transform-origin: left center;
+        }
+        #ham-menu:checked + label span {
+            background-color: var(--dark-green);
+        }
+        #ham-menu:checked + label span:nth-child(2),
+        #ham-menu:checked + label span:nth-child(5) {
+            transform: scale(0);
+        }
+        #ham-menu:checked + label span:nth-child(1) {
+            transform: translateY(17px) rotate(45deg);
+        }
+        #ham-menu:checked + label span:nth-child(4) {
+            transform: translateY(17px) rotate(-45deg);
+        }
+        #ham-menu:checked + label span:nth-child(3) {
+            transform: translateY(-17px) rotate(-45deg);
+        }
+        #ham-menu:checked + label span:nth-child(6) {
+            transform: translateY(-17px) rotate(45deg);
+        }
+        p {
+            display: inline;
+            font-size: 1.8rem;
+            line-height: 1.5em;
+            word-spacing: 0.5em;
+            letter-spacing: 0.1em;
+            font-family: "OpenSansCondensed-Light";
+        }
+        p2{
+            font-size: 20px;
+            color: var(--text-color);
+            font-weight: normal;
+            font-family: sans-serif;
+
+        }
+        /*a {
+          font-size: 1.6rem;
+          line-height: 1.5em;
+          word-spacing: 0.5em;
+          letter-spacing: 0.1em;
+          font-family: "OpenSansCondensed-Light";
+          display: inline;
+          font-weight: bold;
+          padding: 7px;
+          color: var(--icon-hover-bg);
+        }
+        a::after {
+          content: "\e806";
+          display: inline-block;
+          font-family: fontello;
+          padding: 5px;
+          font-size: 1.6rem;
+          transform: rotate(-90deg);
+        }*/
+        .text {
+            font-size: 2.5rem;
+            line-height: 1.5em;
+            word-spacing: 0.5em;
+            letter-spacing: 0.1em;
+            font-family: "OpenSansCondensed-Bold", sans-serif;
+        }
+        .title {
+            font-size: 3rem;
+            line-height: 1.5em;
+            word-spacing: 0.5em;
+            letter-spacing: 0.1em;
+            font-family: "OpenSansCondensed-Bold", sans-serif;
+            color: var(--icon-hover-bg);
+            padding: 10px;
+        }
+        .heading {
+            font-size: 6rem;
+            line-height: 1.5em;
+            word-spacing: 0.5em;
+            letter-spacing: 0.1em;
+            font-family: "Patua One";
+        }
+        .centre-text {
+            text-align: center;
+        }
+        .bold-text {
+            font-weight: bold;
+        }
+
+
+
+    </style>
     <body>
         <div id="header1">
             <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
-                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Welcome to P-H20
+                font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Plant Hydrate
             </h1>
+
         </div>
-        <div class="loginbox">
-            <h1>Sign In</h1>
-            <form th:action="@{/userLogin}" th:object="${user}" method="post">
-                <p>Username</p>
-                <input type="text"  th:field="*{userName}" placeholder="Enter Username"></input>
-                <p>Password</p>
-                <input type="password" th:field="*{password}" placeholder="Enter Password"></input><br>
-                    <div style="text-align: center">
-                        <input type="submit" value="Login" onclick="window.location.href = '/dashboard.html'" id="login-btn"></input>
-                    </div>
-            </form>
-            <div style="text-align: center">
-                <!--<a th:href="@{/reset}">Forgot Username or Password?</a><br>-->
-                <a th:href="@{/register}">Don't have an account?</a><br>
-                 <a th:href="@{/admin}">Administrator Login</a><br>
+        <input type="checkbox" id="ham-menu">
+            <label for="ham-menu">
+                <div class="hide-des">
+                    <p2>Menu</p2>
+                </div>
+
+            </label>
+            <div class="full-page-green"></div>
+            <div class="ham-menu">
+                <ul class="centre-text bold-text">
+                    <li>
+                        <div><a id="navigator" th:href="@{/}">Home</a></div>
+                    </li> 
+                    <li>
+                        <div><a id="navigator" th:href="@{/}">About Us</a></div>
+                    </li> 
+                    <li>
+                        <div><a id="navigator" th:href="@{/register}">Signup</a></div>
+                    </li>
+                    <li>
+                        <div><a id="navigator" th:href="@{/}">User Login</a></div>
+                    </li>
+                    <li>
+                        <div><a id="navigator" th:href="@{/admin}">Administrator</a></div>
+                    </li>
+
+                </ul>
             </div>
-    </body>
-</html>
+
+            <div class="signup__container">
+                <div class="container__child signup__form">
+                    <form th:action="@{/userLogin}" th:object="${user}" method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input class="form-control" type="text" name="username" id="username" th:field="*{userName}" placeholder="ph20" required/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" name="password" id="password" th:field="*{password}" placeholder="********" required />
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                            <div th:if="${param.change}" class="alert alert-success">
+                                <p th:text="${param.change}"></p>
+                            </div>
+                        </div>
+                      
+                        <div class="m-t-lg">
+                            <ul class="list-inline">
+                                <li>
+                                  <input class="btn btn--form" type="submit" value="Login" />
+                                </li>
+                                <li>
+                                    <a th:href="@{/reset}">Forgot Password?</a><br>
+                                        <a th:href="@{/register}">Signup Here</a><br><br>
+                                         <a th:href="@{/admin}">Administrator Login</a><br>                           
+
+                                            </li>
+                                            </ul>
+                                            </div>
+                                            </form>  
+                                            </div>
+                                            <div class="container__child signup__thumbnail"></div>
+                                            </div>
+
+
+
+
+
+
+                                            <!--    
+                                                <body>
+                                                    <div id="header1">
+                                                        <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
+                                                            font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Plant Hydrate
+                                                        </h1>
+                                                    </div>
+                                                    <div class="loginbox">
+                                                    <div class="container" id="container">
+                                                        <div class="form-container sign-up-container">
+                                                        <div class="image">
+                                                            <div text-align="center">
+                                                            <h2 >Signup</h2>
+                                                            </div>
+                                                            <form th:action="@{/registerUser}" th:object="${user}" method="post" onsubmit="required()">
+                                                                <div class="form-group">
+                                                                    <h1>Signup</h1>
+                                                                    
+                                                                    <label for="username">Username</label>
+                                                                    <input type="text" class ="form-control" th:field="*{userName}" placeholder="Username"></input>
+                                                                    <div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+                                                                    <label for="email">Email</label>
+                                                                    <input type="email" class="form-control" th:field="*{email}" placeholder="Email Address"></input>
+                                                                    <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                                                                    <label for="password">Password</label>
+                                                                    <input type="password" class="form-control" th:field="*{password}" placeholder="Password"></input>
+                                                                    <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                                                                    
+                                                                    <input type="submit" value="Create Account" onclick="window.location.href = '/dashboard.html'" id="login-btn"></input>
+                                                                    <div style="text-align: center">
+                                                                        <a th:href="@{/}">Already have an account?</a>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    
+                                                    </div>-->
+                                            </body>
+                                            </html>
+
+                                            <!--    <style>
+                                                    body{
+                                                        margin: 0;
+                                                        padding: 0;
+                                                        background-size: cover;
+                                                        background-position: center;
+                                                        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+                                                        font-family: Rancho, serif
+                                                    }
+                                                    .loginbox{
+                                                        width: 320px;
+                                                        height: 370px;
+                                                        background: #000;
+                                                        color: #fff;
+                                                        top: 50%;
+                                                        left: 50%;
+                                                        position: absolute;
+                                                        transform: translate(-50%, -50%);
+                                                        box-sizing: border-box;
+                                                        border-radius: 10px;
+                                                        padding: 20px 20px 60px;
+                                                    }
+                                                    h1{
+                                                        margin: 0;
+                                                        padding: 0 0 15px 15px;
+                                                        text-align: center;
+                                                        font-size: 28px;
+                                                    }
+                                                    .loginbox p{
+                                                        margin: 0;
+                                                        padding:0;
+                                                        font-weight:bold;
+                                                        font-size: 20px;
+                                                    }
+                                                    .loginbox input{
+                                                        width:100%;
+                                                        margin-bottom:20px;
+                                                    }
+                                                    .loginbox input[type="text"], input[type="password"]
+                                                    {
+                                                        border: none;
+                                                        border-bottom: 1px solid #fff;
+                                                        background: transparent;
+                                                        outline:none;
+                                                        height: 40px;
+                                                        color: #fff;
+                                                        font-size:18px;
+                                                    }
+                                                    .loginbox input[type="submit"]
+                                                    {
+                                                        border: none;
+                                                        outline: none;
+                                                        height: 35px;
+                                                        /*background: #3CB371;*/
+                                                        background:white;
+                                                        /*color: #fff;*/
+                                                        color:black;
+                                                        font-size: 25px;
+                                                        border-radius: 20px;
+                                                    }
+                                                    .loginbox input[type="submit"]:hover{
+                                                        cursor: pointer;
+                                                        /*background: #8FBC8F;*/
+                                                        /*background:#aaa;*/
+                                                        color: #000;
+                                                    }
+                                                    .loginbox a{
+                                                        text-decoration: none;
+                                                        font-size: 16px;
+                                                        line-height: 20px;
+                                                        color: darkgrey;
+                                                    }
+                                                    .loginbox a:hover{
+                                                        color: #8FBC8F;
+                                                    }
+                                                </style>
+                                            
+                                                <body>
+                                                    <div id="header1">
+                                                        <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 80px;
+                                                            font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">Welcome to P-H20
+                                                        </h1>
+                                                    </div>
+                                                    <div class="loginbox">
+                                                        <h1>Sign In</h1>
+                                                        <form th:action="@{/userLogin}" th:object="${user}" method="post">
+                                                            <p>Username</p>
+                                                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Enter Username"></input>
+                                                            <p>Password</p>
+                                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Enter Password"></input><br>
+                                                                <div style="text-align: center">
+                                                                    <input type="submit" value="Login" onclick="window.location.href = '/dashboard.html'" id="login-btn"></input>
+                                                                </div>
+                                                        </form>
+                                                        <div style="text-align: center">
+                                                            <a th:href="@{/reset}">Forgot Username or Password?</a><br>
+                                                            <a th:href="@{/register}">Don't have an account?</a><br>
+                                                             <a th:href="@{/admin}">Administrator Login</a><br>
+                                                        </div>
+                                                </body>
+                                            </html>-->
