@@ -104,9 +104,9 @@
             <h1>Sign In</h1>
             <form th:action="@{/adminLogin}" th:object="${admin}" method="post">
                 <p>Username</p>
-                <input type="text"  th:field="*{adminName}" placeholder="Enter Username"></input>
+                <input type="text" class="form-control" th:field="*{adminName}" placeholder="Enter Username"></input>
                 <p>Password</p>
-                <input type="password" th:field="*{adminPassword}" placeholder="Enter Password"></input><br>
+                <input type="password" class="form-control" th:field="*{adminPassword}" placeholder="Enter Password"></input><br>
                     <div style="text-align: center">
                         <input type="submit" value="Login" onclick="window.location.href = '/admindash.html'" id="login-btn"></input>
                     </div>

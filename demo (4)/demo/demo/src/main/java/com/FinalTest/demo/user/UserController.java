@@ -124,44 +124,16 @@ public class UserController {
         return "calendar";
     }
 
-}
-
-@GetMapping("/weather")
+    @GetMapping("/weather")
     public String viewWeather() {
 
         return "weather";
     }
 
-@GetMapping("/infoPage")
+    @GetMapping("/infoPage")
     public String infoPage() {
 
         return "infoPage";
     }
-    /**
-     * Displays reset password page
-     *
-     * @return reset.html
-     */
-    @GetMapping("/reset")
-    public String reset() {
-        return "reset";
-    }
 
-    @PostMapping("/reset")
-    public String resetPassword() {
-
-        return "";
-    }
-
-    /**
-     * Allows administrator to delete a user from database
-     *
-     * @param userName
-     * @return user.html
-     */
-    @GetMapping("/delete/{userName}")
-    public String deleteUser(@PathVariable("userName") String userName) {
-        service.deleteUser(userName);
-        return "redirect:/all";
-    }
 }
