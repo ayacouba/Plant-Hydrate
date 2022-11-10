@@ -1,7 +1,7 @@
 package com.FinalTest.demo.admin;
 
 /**
- * Last updated: 11/07/2022 
+ * Last updated: 11/10/2022 
  * Purpose: This class takes admin input and turns it
  * into a model to be displayed by the view. Contributing authors: Laura Love,
  * Aimade Yacouba, Kayla Abreu
@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,26 +47,28 @@ public class AdminController {
 
     /**
      * Checks admin input against "admin" table in database. If the username and
-     * password match and are found, it displays the admin's dashboard.
+     * password match and are found, it displays the admin's dashboard. 
      * Otherwise it displays incorrect login page.
      *
      * @param admin
+     * @param result
      * @return
      */
     @PostMapping("/adminLogin")
-    public String loginUser(@ModelAttribute("admin") Admin admin) {
-        String result = "adminLoginError";
+    public String loginUser(@ModelAttribute("admin") Admin admin, BindingResult result) {
+        String display = "adminLogin";
         try {
             String adminName = admin.getAdminName();
             repo.findById(adminName);
             Optional<Admin> admindata = repo.findById(adminName);
             if (admin.getAdminPassword().equals(admindata.get().getAdminPassword())) {
-                result = "admindash";
+                display = "admindash";
             }
         } catch (Exception e) {
-            result = "adminLoginError";
+            result.hasErrors();
+            display = "adminLoginError";
         }
-        return result;
+        return display;
     }
 
     /**

@@ -218,6 +218,7 @@ function openModal(date) {
 function load() {
   const dt = new Date();
 
+//setting month to current month
   if (nav !== 0) {
     dt.setMonth(new Date().getMonth() + nav);
   }
@@ -237,9 +238,11 @@ function load() {
   });
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
+//displaying month
   document.getElementById('monthDisplay').innerText =
     `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
 
+    //clearing calendar
   calendar.innerHTML = '';
 
   for(let i = 1; i <= paddingDays + daysInMonth; i++) {
@@ -249,6 +252,7 @@ function load() {
     const dayString = `${month + 1}/${i - paddingDays}/${year}`;
 
     if (i > paddingDays) {
+    //rendering number for current square
       daySquare.innerText = i - paddingDays;
       const eventForDay = events.find(e => e.date === dayString);
 
@@ -288,11 +292,13 @@ function saveEvent() {
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
 
+    //pushing objects date & title to events array
     events.push({
       date: clicked,
       title: eventTitleInput.value,
     });
 
+    //Save events array to local storage
     localStorage.setItem('events', JSON.stringify(events));
     closeModal();
   } else {
@@ -307,7 +313,7 @@ function deleteEvent() {
   closeModal();
 }
 
-//
+
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;

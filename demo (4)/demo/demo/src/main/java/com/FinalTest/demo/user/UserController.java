@@ -11,11 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -67,7 +64,7 @@ public class UserController {
             }
         } catch (Exception e) {
             result.hasErrors();
-            display = "index";
+            display = "loginError";
         }
         return display;
 
@@ -123,13 +120,19 @@ public class UserController {
     public String viewCalendar() {
         return "calendar";
     }
-
+    /**
+     * Displays weather page
+     * @return weather.html
+     */
     @GetMapping("/weather")
     public String viewWeather() {
 
         return "weather";
     }
-
+    /**
+     * Displays information page
+     * @return infoPage.html
+     */
     @GetMapping("/infoPage")
     public String infoPage() {
 

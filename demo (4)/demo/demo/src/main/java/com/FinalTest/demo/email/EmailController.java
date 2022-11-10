@@ -91,8 +91,7 @@ public class EmailController {
             if (user == null) {
                 session.setAttribute("message", "No user found with this email");
                 return "reset";
-            } else {
-            }
+            } 
             return "passwordChange";
         } else {
             session.setAttribute("message", "You have entered incorrect otp");

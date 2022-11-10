@@ -1,6 +1,13 @@
 com\FinalTest\demo\user\UserService.class
+com\FinalTest\demo\email\EmailRequest.class
+com\FinalTest\demo\email\EmailController.class
 com\FinalTest\demo\user\User.class
+com\FinalTest\demo\email\EmailService.class
+com\FinalTest\demo\admin\Admin.class
+com\FinalTest\demo\email\EmailService$1.class
 com\FinalTest\demo\user\UserServiceImpl.class
+com\FinalTest\demo\admin\AdminController.class
+com\FinalTest\demo\admin\AdminRepository.class
 com\FinalTest\demo\user\UserController.class
 com\FinalTest\demo\FinalTestApplication.class
 com\FinalTest\demo\user\UserRepository.class
