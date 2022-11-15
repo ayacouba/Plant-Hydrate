@@ -318,15 +318,6 @@
                     <li>
                         <div><a id="navigator" th:href="@{/register}">Signup</a></div>
                     </li>
-                    <li>
-                        <div><a id="navigator" th:href="@{/}">User Login</a></div>
-                    </li>
-                    <li>
-                        <div><a id="navigator" th:href="@{/admin}">Administrator</a></div>
-                    </li>
-<!--                    <li>
-                        <div><a id="navigator" th:href="@{/weather}">Check Weather</a></div>
-                    </li>-->
                 </ul>
             </div>
         </input>
@@ -337,13 +328,13 @@
 
                         <div class="form-group">
                             <label for="adminName">Username</label>
-                            <input class="form-control" type="text" name="adminName" id="adminName" th:field="*{adminName}" placeholder="ph20" required/>
+                            <input class="form-control" type="text" name="adminName" id="adminName" th:field="*{adminName}" placeholder="" required/>
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('adminName')}" th:errors="*{adminName}"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" type="adminPassword" name="adminPassword" id="adminPassword" th:field="*{adminPassword}" placeholder="********" required />
+                            <input class="form-control" type="adminPassword" name="adminPassword" id="adminPassword" th:field="*{adminPassword}" placeholder="" required />
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('adminPassword')}" th:errors="*{adminPassword}"></div>
                         </div>
 
@@ -351,10 +342,6 @@
                             <ul class="list-inline">
                                 <li>
                                     <input class="btn btn--form" type="submit" value="Login" />
-                                </li>
-                                <li>
-                                    <a th:href="@{/register}">Don't have an account?</a><br>
-                                    <a th:href="@{/}">Not an administrator?</a><br>                        
                                 </li>
                             </ul>
                         </div>

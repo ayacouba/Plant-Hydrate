@@ -1,4 +1,5 @@
 package com.FinalTest.demo.email;
+
 /**
  * Last updated: 11/07/2022 
  * Purpose: This class takes email input and turns it
@@ -93,7 +94,7 @@ public class EmailController {
             if (user == null) {
                 session.setAttribute("message", "No user found with this email");
                 return "reset";
-            } 
+            }
             return "passwordChange";
         } else {
             session.setAttribute("message", "You have entered incorrect otp");
@@ -115,6 +116,6 @@ public class EmailController {
         user.setPassword(newpassword);
         this.userRepo.save(user);
 
-        return "dashboard";
+        return "index";
     }
 }
