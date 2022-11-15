@@ -1,5 +1,9 @@
 package com.FinalTest.demo.email;
-
+/**
+ * Last updated: 11/14/2022 
+ * Purpose: Hides implementation from user
+ * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
+ */
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import java.util.Properties;
@@ -22,7 +26,7 @@ public class EmailService {
      * @param toEmail
      * @return true if email connects and sends
      */
-    public boolean sendEmail(String subject, String message, String toEmail) {
+    public boolean sendEmail(String subject, String message, String toEmail) throws SendFailedException {
 
         boolean emailCheck = false;
 
@@ -46,7 +50,7 @@ public class EmailService {
         });
         session.setDebug(true);
 
-        //creates MimeMessage obeject and submits email
+        //creates MimeMessage object and submits email
         MimeMessage m = new MimeMessage(session);
         try {
             m.setFrom(from);
@@ -57,6 +61,7 @@ public class EmailService {
             Transport.send(m);
             emailCheck = true;
         } catch (MessagingException e) {
+            throw new SendFailedException();
         }
         return emailCheck;
     }
