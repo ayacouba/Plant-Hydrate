@@ -1,13 +1,12 @@
 package com.FinalTest.demo.user;
 
 /**
- * Last updated: 11/07/2022 
+ * Last updated: 11/15/2022 
  * Purpose: This class takes user input and turns it
  * into a model to be displayed by the view. 
  * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
  */
 import java.util.Optional;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,9 +62,8 @@ public class UserController {
             Optional<User> userdata = repo.findById(userName);
             if (user.getPassword().equals(userdata.get().getPassword())) {
                 return "redirect:/userPlants/" + userName;
-            }
-            else{
-                display= "loginError";
+            } else {
+                display = "loginError";
             }
         } catch (Exception e) {
             result.hasErrors();
@@ -99,6 +97,7 @@ public class UserController {
      */
     @PostMapping("/registerUser")
     public String registerUser(@Valid User user, BindingResult result, Model model) {
+        //TODO prevent duplicate usernames
         if (result.hasErrors()) {
             return "signup";
         }
