@@ -309,23 +309,15 @@
             <div class="ham-menu">
                 <ul class="centre-text bold-text">
                     <li>
-                        <div><a id="navigator" th:href="@{/}">Home</a></div>
-                    </li> 
-                    <li>
                         <div><a id="navigator" th:href="@{/infoPage}">About PH20</a></div>
                     </li> 
                     <li>
                         <div><a id="navigator" th:href="@{/register}">Signup</a></div>
                     </li>
-                    <li>
-                        <div><a id="navigator" th:href="@{/}">User Login</a></div>
-                    </li>
+
                     <li>
                         <div><a id="navigator" th:href="@{/admin}">Administrator</a></div>
                     </li>
-<!--                    <li>
-                        <div><a id="navigator" th:href="@{/weather}">Check Weather</a></div>
-                    </li>-->
                 </ul>
             </div>
         </input>
@@ -337,13 +329,13 @@
 
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input class="form-control" type="text" name="username" id="username" th:field="*{userName}" placeholder="ph20" required/>
+                            <input class="form-control" type="text" name="username" id="username" th:field="*{userName}" placeholder="" required/>
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" type="password" name="password" id="password" th:field="*{password}" placeholder="********" required />
+                            <input class="form-control" type="password" name="password" id="password" th:field="*{password}" placeholder="" required />
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                         </div>
 
@@ -354,8 +346,6 @@
                                 </li>
                                 <li>
                                     <a th:href="@{/reset}">Forgot Password?</a><br>
-                                    <a th:href="@{/register}">Signup Here</a><br><br>
-                                    <a th:href="@{/admin}">Administrator Login</a><br>                           
                                 </li>
                             </ul>
                         </div>

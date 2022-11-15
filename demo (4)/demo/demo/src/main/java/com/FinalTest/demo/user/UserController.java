@@ -61,7 +61,7 @@ public class UserController {
             repo.findById(userName);
             Optional<User> userdata = repo.findById(userName);
             if (user.getPassword().equals(userdata.get().getPassword())) {
-                display = "dashboard";
+                return "redirect:/userPlants/" + userName;
             }
         } catch (Exception e) {
             result.hasErrors();
@@ -99,7 +99,8 @@ public class UserController {
             return "signup";
         }
         service.registerUser(user);
-        return "dashboard";
+        return "index";
+
     }
 
     /**
@@ -121,8 +122,10 @@ public class UserController {
     public String viewCalendar() {
         return "calendar";
     }
+
     /**
      * Displays weather page
+     *
      * @return weather.html
      */
     @GetMapping("/weather")
@@ -130,8 +133,10 @@ public class UserController {
 
         return "weather";
     }
+
     /**
      * Displays information page
+     *
      * @return infoPage.html
      */
     @GetMapping("/infoPage")
