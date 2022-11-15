@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <title>P-H20 DASHBOARD</title>
     <link
         href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
@@ -53,15 +56,35 @@
             text-transform: uppercase;
             font-family: Rancho, serif
         }
+        
+        .styled-table th,
+        .styled-table td {
+            text-align: center;
+            padding: 12px 15px;
+            font-size:30px;
+            font-family: Rancho, serif;
+        }
+ 
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        .styled-table tr {
+            counter-increment: row-num;
+        }
+        .styled-table tr td:first-child::before {
+            content: counter(row-num) ". ";
+        }
+       
     </style>
     <div class="btn-text-right">
+        
         <button onclick="window.location.href = '/'"  id="logout-btn">Logout</button>
     </div>
     <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 100px;">
         Dashboard
     </h1>
 
-    <title>Plant List</title>
+   <!-- <title>Plant List</title> -->
     <head>
     <body>
 
@@ -73,24 +96,54 @@
 
             <div class="container ">
 
-                <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List
+                <!--<h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List-->
                 </h3>
                 <div class="flex flex-col justify-center items-center flex mr-4">
 
 
-                    <input class=" " name="text" id="text" placeholder=" " style="text-align: center"/>
+                <!--    <input class=" " name="text" id="text" placeholder=" " style="text-align: center"/>
                     <!--< only seen by the user>-->
-                    <input type="hidden" id="saveIndex"/>
-                    <button class=" " id="add-plant-btn"   >Add</button>
-
+                 <!--   <input type="hidden" id="saveIndex"/>
+                    <button class=" " id="add-plant-btn">Add</button>
+                 -->
+                 <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Calendar
+                    </h3>   
                     <button onclick="window.location.href = '/calendar'"  id="calendar-btn">View Your Calendar</button>
-                    <button class=" " style="display: none" id="save-plant-btn"
-                            >Save</button> 
-
+                 <!--   <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List 
+                    </h3> -->
+                  <!--  <button class=" " style="display: none" id="save-plant-btn">Save</button>
                 </div>
                 <!--< plant list>-->
-                <div id="plants"></div>
+              <!--  <div id="plants"></div>
+                <div >
+              -->
+              <div class="container" align="center">
+                    <table class =" styled-table">
+                    <thead>
+                    <tr>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <form th:action="@{/all/plant}" method="get">
+                      <h3 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 65px;"> Plant List
+                    </h3>   
+                        <div>
+                           
+                        <button  onclick="window.location.href = '/dashboard'" id="dashboardButton">View Plant List</button></div>
+                        
+                    <tr th:each="plant : ${plantList}">
+                        <td th:text=" ${plant.name}"></td>
+                        <td>
+                            <a th:href="@{'/delete/' + ${plant.name}}"><button id="dashboardButton">Delete</button></a>
+                        </td>
+                    </tr>
+                            
+                    </tbody>
+                    </table>
+                </div>
             </div>
+            
         </div>
 
 
@@ -104,9 +157,8 @@
 
             //Declare array to store plants
             let plantArray = [];
+
             displayPlant();
-
-
 
             //Add plant and push to plantArray and use click on add button
             addPlantButton.addEventListener("click", (e) => {
@@ -121,8 +173,6 @@
             text.value = "";
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-
-
             });
 
             //Display plants
@@ -143,7 +193,6 @@
             </div>`;
             });
             listBox.innerHTML = htmlCode;
-
             }
 
             //Delete Plant
@@ -155,7 +204,6 @@
             //store changes to local storage
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-
             }
 
             //Edit plant and save to local storage
@@ -180,17 +228,6 @@
             text.value = "";
             localStorage.setItem("plant", JSON.stringify(plantArray));
             displayPlant();
-
             });
 
-          
-            var a = document.body.appendChild(
-            document.createElement("a")
-            );
-            a.download = "export.txt";
-            a.href = "data:text/plain;base64," + btoa(JSON.stringify(plantArray,userId));//+btoa(JSON.stringify(user));
-            a.innerHTML = "download example text";
         </script>
-
-    </body>
-</html>

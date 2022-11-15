@@ -8,6 +8,7 @@ package com.FinalTest.demo.email;
 import com.FinalTest.demo.user.User;
 import com.FinalTest.demo.user.UserRepository;
 import java.util.Random;
+import javax.mail.SendFailedException;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,9 +47,10 @@ public class EmailController {
      * @param email
      * @param session
      * @return newpassword.html or reset.html
+     * @throws javax.mail.SendFailedException
      */
     @PostMapping("/reset")
-    public String resetPassword(@RequestParam("email") String email, HttpSession session) {
+    public String resetPassword(@RequestParam("email") String email, HttpSession session) throws SendFailedException {
         Random random = new Random();
         int otp = random.nextInt(999999);
         String subject = "Plant Hydrate OTP";

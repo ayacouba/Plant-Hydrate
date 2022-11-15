@@ -1,7 +1,8 @@
 package com.FinalTest.demo.user;
 
 /**
- * Last updated: 11/07/2022 Purpose: This class takes user input and turns it
+ * Last updated: 11/07/2022 
+ * Purpose: This class takes user input and turns it
  * into a model to be displayed by the view. 
  * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
  */

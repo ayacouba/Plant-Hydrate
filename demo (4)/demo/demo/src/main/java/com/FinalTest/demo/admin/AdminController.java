@@ -1,10 +1,9 @@
 package com.FinalTest.demo.admin;
-
 /**
  * Last updated: 11/10/2022 
  * Purpose: This class takes admin input and turns it
- * into a model to be displayed by the view. Contributing authors: Laura Love,
- * Aimade Yacouba, Kayla Abreu
+ * into a model to be displayed by the view. 
+ * Contributing authors: Laura Love,Aimade Yacouba, Kayla Abreu
  */
 import com.FinalTest.demo.user.UserService;
 import java.util.Optional;
@@ -55,7 +54,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/adminLogin")
-    public String loginUser(@ModelAttribute("admin") Admin admin, BindingResult result) {
+    public String loginAdmin(@ModelAttribute("admin") Admin admin, BindingResult result) {
         String display = "adminLogin";
         try {
             String adminName = admin.getAdminName();
