@@ -25,8 +25,9 @@ public class EmailService {
      * @param message
      * @param toEmail
      * @return true if email connects and sends
+     * @throws javax.mail.SendFailedException
      */
-    public boolean sendEmail(String subject, String message, String toEmail) throws SendFailedException {
+    public boolean sendEmail(String subject, String message, String toEmail) throws SendFailedException{
 
         boolean emailCheck = false;
 

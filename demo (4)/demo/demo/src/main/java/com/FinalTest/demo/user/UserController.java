@@ -7,6 +7,7 @@ package com.FinalTest.demo.user;
  * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
  */
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,6 +64,9 @@ public class UserController {
             if (user.getPassword().equals(userdata.get().getPassword())) {
                 return "redirect:/userPlants/" + userName;
             }
+            else{
+                display= "loginError";
+            }
         } catch (Exception e) {
             result.hasErrors();
             display = "loginError";
@@ -100,9 +104,8 @@ public class UserController {
         }
         service.registerUser(user);
         return "index";
-
+    
     }
-
     /**
      * Displays user dashboard
      *

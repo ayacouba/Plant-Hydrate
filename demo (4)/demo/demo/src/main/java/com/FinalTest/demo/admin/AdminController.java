@@ -51,7 +51,7 @@ public class AdminController {
      *
      * @param admin
      * @param result
-     * @return
+     * @return adminLogin.html or admindash.html
      */
     @PostMapping("/adminLogin")
     public String loginAdmin(@ModelAttribute("admin") Admin admin, BindingResult result) {
@@ -63,13 +63,16 @@ public class AdminController {
             if (admin.getAdminPassword().equals(admindata.get().getAdminPassword())) {
                 display = "admindash";
             }
+            else{
+                display = "adminLoginError";
+            }
         } catch (Exception e) {
             result.hasErrors();
             display = "adminLoginError";
         }
         return display;
     }
-
+   
     /**
      * Retrieves a list of all users stored in database and displays it
      *
