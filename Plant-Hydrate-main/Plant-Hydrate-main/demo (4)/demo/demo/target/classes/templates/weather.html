@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Weather Of The Day</title>
+        <link rel="stylesheet"> 
+            <link
+                href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|	shadow-multiple"
+                rel="stylesheet"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                </head>
+                <style>
+                    body{
+                        margin: 0;
+                        padding: 0;
+                        background-size: cover;
+                        background-position: center;
+                        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+                        font-family: Rancho, serif
+                    }
+
+                    button {
+                        width: 75px;
+                        cursor: pointer;
+                        box-shadow: 0px 0px 2px gray;
+                        border: none;
+                        outline: none;
+                        padding: 5px;
+                        border-radius: 5px;
+                        color: white;
+                        background-color:#92a1d1;
+                    }
+
+                    h1{
+                        margin: 0;
+                        padding: 0 0 15px 15px;
+                        text-align: center;
+                        font-size: 28px;
+                    }
+                </style>
+                <body>
+                    <div id="header1">
+                        <button onclick="window.location.href = '/'"  id="" >Logout</button>
+                        <h1 class="font-effect-3d" style="text-align: center; color: yellowgreen; font-size: 100px;
+                            font-family: Rancho, serif; text-shadow: 4px 4px 4px #aaa;">5-Day Weather Forecast</h1>
+                        <div  class="weatherWidget"></div>
+                        <script>
+                            window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+                            window.weatherWidgetConfig.push({
+                                selector: ".weatherWidget",
+                                apiKey: "W6ZK2KY4UKZ9YMARJ7FQ92PV5",
+                                location: "Greensboro, NC",
+                                unitGroup: "us",
+                                forecastDays: 5,
+                                title: "Greensboro,NC",
+                                showTitle: true,
+                                showConditions: true
+                            });
+
+                            (function () {
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                </body>
+                </html>
+                </html>
+
