@@ -299,17 +299,8 @@
                         <div><a id="navigator" th:href="@{/infoPage}">About PH20</a></div>
                     </li> 
                     <li>
-                        <div><a id="navigator" th:href="@{/register}">Signup</a></div>
-                    </li>
-                    <li>
-                        <div><a id="navigator" th:href="@{/}">User Login</a></div>
-                    </li>
-                    <li>
                         <div><a id="navigator" th:href="@{/admin}">Administrator</a></div>
                     </li>
-<!--                    <li>
-                        <div><a id="navigator" th:href="@{/weather}">Check Weather</a></div>
-                    </li>-->
                 </ul>
             </div>
         </input>
@@ -318,19 +309,19 @@
                     <form th:action="@{/registerUser}" th:object="${user}" method="post">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input class="form-control" type="text" name="username" id="username" th:field="*{userName}" placeholder="ph20"/>
+                            <input class="form-control" type="text" name="username" id="username" th:field="*{userName}" placeholder=""/>
                             <div class="alert alert-warning" align="center" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" type="text" name="email" id="email"  th:field="*{email}" placeholder="ph20@gmail.com"  />
+                            <input class="form-control" type="text" name="email" id="email"  th:field="*{email}" placeholder=""  />
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" type="password" name="password" id="password" th:field="*{password}" placeholder="********"  />
+                            <input class="form-control" type="password" name="password" id="password" th:field="*{password}" placeholder=""  />
                             <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                         </div>
 
@@ -338,9 +329,6 @@
                             <ul class="list-inline">
                                 <li>
                                     <input class="btn btn--form" type="submit" value="Register" />
-                                </li>
-                                <li>
-                                    <a class="signup__link" th:href="@{/}">Already have an account?</a>
                                 </li>
                             </ul>
                         </div>

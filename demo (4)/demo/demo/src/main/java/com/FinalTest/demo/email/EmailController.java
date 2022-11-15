@@ -1,15 +1,15 @@
 package com.FinalTest.demo.email;
 
 /**
- * Last updated: 11/07/2022 
- * Purpose: This class takes email input and turns it
- * into a model to be displayed by the view. 
- * Contributing authors: Laura Love, Aimade Yacouba, Kayla Abreu
+ * Last updated: 11/07/2022 Purpose: This class takes email input and turns it
+ * into a model to be displayed by the view. Contributing authors: Laura Love,
+ * Aimade Yacouba, Kayla Abreu
  */
 import com.FinalTest.demo.user.User;
 import com.FinalTest.demo.user.UserRepository;
 import java.util.Random;
 import javax.mail.SendFailedException;
+//import javax.mail.SendFailedException;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,8 +47,8 @@ public class EmailController {
      *
      * @param email
      * @param session
-     * @return newpassword.html or reset.html
-     * @throws javax.mail.SendFailedException
+     * @return newpassword.html or reset.html // * @throws
+     * javax.mail.SendFailedException
      */
     @PostMapping("/reset")
     public String resetPassword(@RequestParam("email") String email, HttpSession session) throws SendFailedException {
@@ -86,7 +86,7 @@ public class EmailController {
      */
     @PostMapping("/verifyOTP")
     public String verifyOTP(@RequestParam("otp") int otp, HttpSession session) {
-
+     
         int myOTP = (int) session.getAttribute("myotp");
         String email = (String) session.getAttribute("email");
         if (myOTP == otp) {
@@ -115,7 +115,8 @@ public class EmailController {
         User user = this.userRepo.getUserByUserName(email);
         user.setPassword(newpassword);
         this.userRepo.save(user);
+        String userName = user.getUserName();
 
-        return "index";
+        return "redirect:/userPlants/" + userName;
     }
 }
